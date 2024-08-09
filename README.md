@@ -1,2 +1,3 @@
 # PicDrop
-Parados Take-Home Assignment 
+
+Parados Take-Home Assignment
