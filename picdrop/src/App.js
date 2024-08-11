@@ -19,10 +19,18 @@ function App() {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
 
-    if (file && file.type.startsWith('image/')) {
+    const converted_size = formatFileSize(file.size)
+    console.log(converted_size)
+    if (converted_size > 25){
+      setError('Files larger than 25 MB are currently not supported. Please compress your file.');
+      setImage(null);
+    }
+    else if(file && file.type.startsWith('image/')) {
       setImage(file);
+      console.log(file.size)
       setError('');
-    } else {
+    } 
+    else {
       setError('Unsupported file format. Please upload an image.');
       setImage(null);
     }
@@ -40,6 +48,7 @@ function App() {
   const formatFileSize = (size) => {
     return (size / (1024 * 1024)).toFixed(2);
   };
+
   return (
     <div className="App">
       <h1>Welcome to <span className='picDrop'>PicDrop</span></h1>
@@ -79,7 +88,7 @@ function App() {
                  <div className="image-details">
                 <p><strong>Information</strong></p>
                 <p>Name: {image.name}</p>
-                <p>Format: {image.type}</p>
+                <p>Format: {image.type.split("/")[1].toUpperCase()}</p>
                 <p>Size: {formatFileSize(image.size)} MB</p>
               </div>
               </Tooltip>
@@ -97,7 +106,7 @@ function App() {
           <div className='upload-placeholder'>
             <img src={picdrop_icon} alt="PicDrop Icon" className="picdrop-icon"/>
             <p><span>Drag and drop an image here or </span><span>browse</span></p>
-            <p>Supports JPG, PNG, GIF, or BMP</p>
+            <p>Supports JPG, PNG, GIF, WEBP, TIFF or BMP</p>
           </div> 
         )}
       </div>
