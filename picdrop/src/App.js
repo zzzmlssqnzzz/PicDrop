@@ -20,27 +20,28 @@ function App() {
     event.preventDefault();
      let files = event.type === 'drop' ? event.dataTransfer.files : event.target.files;
 
-    if (files.length > 1) {
-      setError('Please upload only one file at a time.');
-      setImage(null);
-      return;
-    }
-
     const file = files[0];
     const converted_size = formatFileSize(file.size);
 
-    if (converted_size > 25){
+    if (files.length > 1) {
+      setError('Please upload only one file at a time.');
+      setImage(null);
+      setOpen(true);
+    }
+    else if (converted_size > 25){
       setError('Files larger than 25 MB are currently not supported. Please compress your file.');
       setImage(null);
+      setOpen(true);
     }
     else if(file && file.type.startsWith('image/')) {
       setImage(file);
-      console.log(file.size)
       setError('');
+      setOpen(true);
     } 
     else {
       setError('Unsupported file format. Please upload an image.');
       setImage(null);
+      setOpen(true);
     }
   };
 
@@ -64,7 +65,7 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to <span className='picDrop'>PicDrop</span></h1>
-       <Box sx={{ width: '100%' }}>
+       <Box sx={{ width: '65%', margin:'auto'}}>
       <Collapse in={open}>
         {error? <Alert severity='warning'
           action={
@@ -101,7 +102,7 @@ function App() {
             <div>
               <div className='info-icon'>
                  <InfoTwoToneIcon 
-                 fontSize='medium'
+                 fontSize='large'
                  sx={{ stroke: "#4B56D0", strokeWidth: 1 }}
               className="info-details"/>
               </div>
@@ -116,6 +117,7 @@ function App() {
             </div>
             <div className="reset-button"> 
               <ReplayTwoToneIcon
+              fontSize='large'
             data-tooltip-id="reset-tooltip" 
             data-tooltip-content="Reset" 
             data-tooltip-place="top" 
