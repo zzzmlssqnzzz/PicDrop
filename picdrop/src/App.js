@@ -16,33 +16,38 @@ function App() {
   const [open, setOpen] = useState(true);
   const fileInputRef = useRef(null); 
 
+  const formatFileSize = (size) => {
+    return (size / (1024 * 1024)).toFixed(2);
+  };
+
   const handleDrop = (event) => {
     event.preventDefault();
      let files = event.type === 'drop' ? event.dataTransfer.files : event.target.files;
 
     const file = files[0];
     const converted_size = formatFileSize(file.size);
+    console.log(file.type)
 
     if (files.length > 1) {
       setError('Please upload only one file at a time.');
       setImage(null);
       setOpen(true);
     }
-    else if (converted_size > 25){
-      setError('Files larger than 25 MB are currently not supported. Please compress your file.');
-      setImage(null);
-      setOpen(true);
-    }
-    else if(file && file.type.startsWith('image/')) {
-      setImage(file);
-      setError('');
-      setOpen(true);
-    } 
-    else {
+    else if (file && !file.type.startsWith('image/')) {
       setError('Unsupported file format. Please upload an image.');
       setImage(null);
       setOpen(true);
     }
+    else if (converted_size > 10){
+      setError('Files larger than 10 MB are currently not supported. Please compress your file.');
+      setImage(null);
+      setOpen(true);
+    }
+    else {
+      setImage(file);
+      setError('');
+      setOpen(true);
+    } 
   };
 
   const handleReset = () => {
@@ -56,10 +61,6 @@ function App() {
 
   const handleDragOver = (event) => {
     event.preventDefault();
-  };
-
-  const formatFileSize = (size) => {
-    return (size / (1024 * 1024)).toFixed(2);
   };
 
   return (
@@ -98,7 +99,7 @@ function App() {
         />
         {image ? (
           <div className="image-preview">
-            <img src={URL.createObjectURL(image)} alt="Preview" className="upload"/>
+            <img src={URL.createObjectURL(image)} alt={image.name} className="upload"/>
             <div>
               <div className='info-icon'>
                  <InfoTwoToneIcon 
