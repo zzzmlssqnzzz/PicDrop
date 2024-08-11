@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import picdrop_icon from './icons/picdrop_icon.png'
-import info_details from './icons/info-details_icon.png'
-import reset_icon from './icons/reset_icon.png'
 import { Tooltip } from 'react-tooltip'
 import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close'
+import CloseIcon from '@mui/icons-material/Close'; 
+import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
+import ReplayTwoToneIcon from '@mui/icons-material/ReplayTwoTone';
 
 function App() {
   const [image, setImage] = useState(null);
   const [error, setError] = useState('');
   const [open, setOpen] = useState(true);
+  const fileInputRef = useRef(null); 
 
   const handleDrop = (event) => {
     event.preventDefault();
-    const file = event.dataTransfer.files[0];
+    let file; 
+
+    if (event.type === 'drop'){
+      file = event.dataTransfer.files[0]; 
+    } else {
+      file = event.target.files[0];
+    }
 
     const converted_size = formatFileSize(file.size)
     console.log(converted_size)
+
     if (converted_size > 25){
       setError('Files larger than 25 MB are currently not supported. Please compress your file.');
       setImage(null);
@@ -40,6 +48,10 @@ function App() {
     setImage(null);
     setError('');
   };
+
+  const handleBrowse = () => {
+    fileInputRef.current.click(); 
+  }
 
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -76,14 +88,22 @@ function App() {
         onDrop={handleDrop} 
         onDragOver={handleDragOver}
       >
+        <input
+        type="file"
+        style={{ display: 'none' }} 
+        ref={fileInputRef} 
+        onChange={handleDrop} 
+        accept="image/*"
+        />
         {image ? (
           <div className="image-preview">
             <img src={URL.createObjectURL(image)} alt="Preview" className="upload"/>
             <div>
-              <img 
-              src={info_details} 
-              alt="info-details" 
+              <div className='info-icon'>
+                 <InfoTwoToneIcon 
+                 fontSize='medium'
               className="info-details"/>
+              </div>
               <Tooltip anchorSelect='.info-details'place='top' className='tooltip'>
                  <div className="image-details">
                 <p><strong>Information</strong></p>
@@ -93,19 +113,20 @@ function App() {
               </div>
               </Tooltip>
             </div>
-            <img src={reset_icon} alt="Reset" 
-            className="reset-button" 
+            <div className="reset-button"> 
+              <ReplayTwoToneIcon
             data-tooltip-id="reset-tooltip" 
             data-tooltip-content="Reset" 
             data-tooltip-place="top" 
             onClick={handleReset}/>
+            </div>
              <Tooltip id="reset-tooltip"/>
           </div>
          
         ) : (
           <div className='upload-placeholder'>
             <img src={picdrop_icon} alt="PicDrop Icon" className="picdrop-icon"/>
-            <p><span>Drag and drop an image here or </span><span>browse</span></p>
+            <p><span>Drag and drop an image here or </span><span onClick={handleBrowse} className="browse-link"><strong>Browse</strong></span></p>
             <p>Supports JPG, PNG, GIF, WEBP, TIFF or BMP</p>
           </div> 
         )}

@@ -21,17 +21,21 @@ h1 {
   border: 2px dashed #4B56D0;
   background-color: #DBDDF6;
   border-radius: 10px;
-  padding: 5%;
-  margin: 10px auto;
+  padding: 2.5%;
+  margin: auto;
   width: 100%;
   height: 100%; 
-  max-width: 600px;
+  max-width: 60%;
   cursor: pointer;
 }
 
 .upload{
   width: 100%;
   height: 100%;
+}
+
+.browse-link:hover{
+  color:#4B56D0;
 }
 
 .upload-placeholder p {
@@ -63,8 +67,9 @@ h1 {
   margin-bottom: 20px;
 }
 
-.info-details{
+.info-icon{
   position: absolute;
+  color: white;
   left: 10px;
   bottom: 10px;
   width: 30px;
@@ -74,8 +79,8 @@ h1 {
 
 .reset-button {
   position:absolute;
+  color: white;
   right: 10px; 
-  bottom: 10px;
   bottom: 10px;
   width: 30px;
   height: 30px;
