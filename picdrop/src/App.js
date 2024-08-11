@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
+import picdrop_icon from './icons/picdrop_icon.png'
+import info_details from './icons/info-details_icon.png'
+import reset_icon from './icons/reset_icon.png'
+import { Tooltip } from 'react-tooltip'
 
 function App() {
   const [image, setImage] = useState(null);
@@ -28,12 +32,12 @@ function App() {
   };
 
   const formatFileSize = (size) => {
-    return (size / (1024 * 1024)).toFixed(2); // Convert size to MB and round to 2 decimal places
+    return (size / (1024 * 1024)).toFixed(2);
   };
 
   return (
     <div className="App">
-      <h1>Welcome to PicDrop</h1>
+      <h1>Welcome to <span className='picDrop'>PicDrop</span></h1>
       <div 
         className="drop-area" 
         onDrop={handleDrop} 
@@ -41,16 +45,27 @@ function App() {
       >
         {image ? (
           <div className="image-preview">
-            <img src={URL.createObjectURL(image)} alt="Preview" />
-            <div className="image-details">
-              <p><strong>Name:</strong> {image.name}</p>
-              <p><strong>Format:</strong> {image.type}</p>
-              <p><strong>Size:</strong> {formatFileSize(image.size)} MB</p>
+            <img src={URL.createObjectURL(image)} alt="Preview" className="upload"/>
+            <div>
+              <img 
+              src={info_details} 
+              alt="info-details" 
+              className="info-details"/>
+              <Tooltip anchorSelect='.info-details'place='top' className='tooltip'>
+                 <div className="image-details">
+                <p><strong>Name:</strong> {image.name}</p>
+                <p><strong>Format:</strong> {image.type}</p>
+                <p><strong>Size:</strong> {formatFileSize(image.size)} MB</p>
+              </div>
+              </Tooltip>
             </div>
-            <button onClick={handleReset}>Reset</button>
+            <img src={reset_icon} alt="Reset" className="reset-button" onClick={handleReset}/>
           </div>
         ) : (
-          <p>Drag and drop an image here, or click to upload.</p>
+          <div className='upload-placeholder'>
+            <img src={picdrop_icon} alt="PicDrop Icon" className="picdrop-icon"/>
+            <p>Drag and drop an image here.</p>
+          </div> 
         )}
         {error && <p className="error">{error}</p>}
       </div>

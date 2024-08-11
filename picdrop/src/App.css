@@ -4,46 +4,86 @@
 }
 
 h1 {
-  font-family: Arial, sans-serif;
+  font-family:'Josefin Sans';
   margin-bottom: 20px;
 }
 
+.picDrop{
+  color:#4B56D0; 
+}
+
+.tooltip{
+  background-color: white;
+  border-color: #4B56D0;
+}
+
 .drop-area {
-  border: 2px dashed #cccccc;
+  border: 2px dashed #4B56D0;
+  background-color: #DBDDF6;
   border-radius: 10px;
-  padding: 50px;
-  margin: 20px auto;
+  padding: 5%;
+  margin: 10px auto;
   width: 100%;
+  height: 100%; 
   max-width: 600px;
   cursor: pointer;
 }
 
-.drop-area p {
+.upload{
+  width: 100%;
+  height: 100%;
+}
+
+.upload-placeholder p {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Josefin Sans';
   color: #666666;
 }
 
+.picdrop-icon{
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
 .image-preview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  display: inline-block;
 }
 
 .image-preview img {
-  max-width: 100%;
+  max-width: auto;
   height: auto;
-  margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 .image-details {
-  font-family: Arial, sans-serif;
-  color: #333333;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
   margin-bottom: 20px;
 }
 
-button {
-  background-color: #4CAF50;
+.info-details{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.reset-button {
+  position:absolute;
+  right: 10px; 
+  bottom: 10px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+button{
+  background-color: #4B56D0;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -52,10 +92,10 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: black;
 }
 
 .error {
   color: red;
-  font-family: Arial, sans-serif;
+  font-family: Josefin-sans, sans-serif;
 }
