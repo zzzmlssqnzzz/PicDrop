@@ -18,16 +18,16 @@ function App() {
 
   const handleDrop = (event) => {
     event.preventDefault();
-    let file; 
+     let files = event.type === 'drop' ? event.dataTransfer.files : event.target.files;
 
-    if (event.type === 'drop'){
-      file = event.dataTransfer.files[0]; 
-    } else {
-      file = event.target.files[0];
+    if (files.length > 1) {
+      setError('Please upload only one file at a time.');
+      setImage(null);
+      return;
     }
 
-    const converted_size = formatFileSize(file.size)
-    console.log(converted_size)
+    const file = files[0];
+    const converted_size = formatFileSize(file.size);
 
     if (converted_size > 25){
       setError('Files larger than 25 MB are currently not supported. Please compress your file.');
@@ -102,6 +102,7 @@ function App() {
               <div className='info-icon'>
                  <InfoTwoToneIcon 
                  fontSize='medium'
+                 sx={{ stroke: "#4B56D0", strokeWidth: 1 }}
               className="info-details"/>
               </div>
               <Tooltip anchorSelect='.info-details'place='top' className='tooltip'>
@@ -118,6 +119,7 @@ function App() {
             data-tooltip-id="reset-tooltip" 
             data-tooltip-content="Reset" 
             data-tooltip-place="top" 
+            sx={{ stroke: "#4B56D0", strokeWidth: 1 }}
             onClick={handleReset}/>
             </div>
              <Tooltip id="reset-tooltip"/>
