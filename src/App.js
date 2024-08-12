@@ -41,12 +41,12 @@ function App() {
       setOpen(true);
     }
     else if (file && !file.type.startsWith('image/')) {
-      setError( t('warnings.type_warning'));
+      setError(t('warnings.type_warning'));
       setImage(null);
       setOpen(true);
     }
     else if (converted_size > 10){
-      setError( t('warnings.size_warning'));
+      setError(t('warnings.size_warning'));
       setImage(null);
       setOpen(true);
     }
@@ -80,10 +80,7 @@ function App() {
          <MaterialUiSwitch/>
          </div>
       </div>
-      <h1>{ t("welcome")}
-      <span className='picDrop'>
-        { t("picdrop")}
-        </span>
+      <h1>{t("welcome")} <span className='picDrop'> PicDrop </span>
       </h1>
        <Box sx={{ width: '65%', margin:'auto', marginBottom:'20px'}}>
       <Collapse in={open}>
@@ -128,10 +125,10 @@ function App() {
               </div>
               <Tooltip anchorSelect='.info-details'place='top' className='tooltip'>
                  <div className="image-details">
-                <p><strong>{ t('image_data.information')}</strong></p>
-                <p>{ t('image_data.name')}: {image.name}</p>
-                <p>{ t('image_data.format')}: {image.type.split("/")[1].toUpperCase()}</p>
-                <p>{ t('image_data.size')}: {formatFileSize(image.size)} MB</p>
+                <p><strong>Information</strong></p>
+                <p>{t('image_data.name')}: {image.name}</p>
+                <p>Format: {image.type.split("/")[1].toUpperCase()}</p>
+                <p>{t('image_data.size')}: {formatFileSize(image.size)} MB</p>
               </div>
               </Tooltip>
             </div>
@@ -150,8 +147,8 @@ function App() {
         ) : (
           <div className='upload-placeholder'>
             <img src={picdrop_icon} alt="PicDrop Icon" className="picdrop-icon"/>
-            <p><span>{ t("placeholder")} </span><span onClick={handleBrowse} className="browse-link"><strong>{ t("browse")}</strong></span></p>
-            <p>{ t("valid_type")}</p>
+            <p><span>{t("placeholder")} </span><span onClick={handleBrowse} className="browse-link"><strong>{t("browse")}</strong></span></p>
+            <p>{t("valid_type")}</p>
           </div> 
         )}
       </div>
