@@ -82,9 +82,9 @@ function App() {
       </div>
       <h1>{t("welcome")} <span className='picDrop'> PicDrop </span>
       </h1>
-       <Box sx={{ width: '65%', margin:'auto', marginBottom:'20px'}}>
+       <Box sx={{ width: '60%', margin:'auto', marginBottom:'20px'}}>
       <Collapse in={open}>
-        {error? <Alert sx={{ bgcolor: 'background.paper' }}severity='warning'
+        {error? <Alert sx={{ bgcolor: 'background.paper' }} severity='warning'
           action={
             <IconButton
               aria-label="close"

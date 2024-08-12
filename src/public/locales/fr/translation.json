@@ -4,13 +4,13 @@
         "type_warning":"", 
         "size_warning":""
     }, 
-    "welcome":"Bienvenue à", 
+    "welcome":"Bienvenue à ", 
     "image_data":{
         "name":"Nom", 
         "size":"Taille"
     },
     "reset":"Réinitialiser", 
-    "placeholder":"Glisser-déposer une image ici ou", 
+    "placeholder":"Glisser-déposer une image ici ou ", 
     "browse":"Télécharger", 
     "valid_type":"Prend en charge les formats JPG, PNG, GIF, WEBP, TIFF ou BMP."
 }
