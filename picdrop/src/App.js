@@ -85,9 +85,9 @@ function App() {
         { t("picdrop")}
         </span>
       </h1>
-       <Box sx={{ width: '65%', margin:'auto'}}>
+       <Box sx={{ width: '65%', margin:'auto', marginBottom:'20px'}}>
       <Collapse in={open}>
-        {error? <Alert severity='warning'
+        {error? <Alert sx={{ bgcolor: 'background.paper' }}severity='warning'
           action={
             <IconButton
               aria-label="close"

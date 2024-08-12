@@ -54,11 +54,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomizedSwitches() {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [dark, setDarkMode] = React.useState(false);
    
   const theme = createTheme({
     palette: {
-      mode: darkMode ? 'dark' : 'light',
+      mode: dark ? 'dark' : 'light',
     },
   });
   
@@ -71,8 +71,8 @@ export default function CustomizedSwitches() {
       <CssBaseline />
       <FormGroup>
         <FormControlLabel
-          control={<MaterialUISwitch sx={{ m: 1 }} checked={darkMode} onChange={handleThemeChange} />}
-          label={darkMode ? 'Dark Mode' : 'Light Mode'}
+          control={<MaterialUISwitch sx={{ m: 1 }} checked={dark} onChange={handleThemeChange} />}
+          label={dark ? 'Dark Mode' : 'Light Mode'}
         />
       </FormGroup>
     </ThemeProvider>
