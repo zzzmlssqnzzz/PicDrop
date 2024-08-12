@@ -10,21 +10,13 @@ h1 {
 }
 
 .picDrop{
-  color:#4B56D0; 
+  color:#4b5aff; 
 }
 
-.dark{
-  
-}
-
-.tooltip{
-  background-color: white;
-  border-color: #4B56D0;
-}
 
 .drop-area {
-  border: 2px dashed #4B56D0;
-  background-color: #DBDDF6;
+  border: 2px dashed #4b5aff;
+  background-color:#4b56d049;
   border-radius: 10px;
   padding: 2.5%;
   margin: auto;
@@ -40,19 +32,18 @@ h1 {
 }
 
 .browse-link:hover{
-  color:#4B56D0;
+  color:#4b5aff;
 }
 
 .upload-placeholder p {
   margin: 5px;
   font-family: 'Josefin Sans';
-  color:#5C5C66;
 }
 
 .picdrop-icon{
-  width: 80px;
+  width: 70px;
   height: 80px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .image-preview {
