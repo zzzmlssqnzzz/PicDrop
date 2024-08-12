@@ -13,7 +13,7 @@ If it returns command not found, you can install npm
 
 Once you have installed npm, run the following steps:
 
-1. Enter the picdrop folder
+1. Enter the picdrop folder.
 
    `cd picdrop`
 
@@ -21,6 +21,6 @@ Once you have installed npm, run the following steps:
 
    `npm i`
 
-3. Run locally
+3. Run locally.
 
    `npm start`
