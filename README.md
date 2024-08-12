@@ -1,6 +1,8 @@
 # PicDrop
 
-PicDrop displays the basic properties of images that are dragged, dropped, or uploaded by users. To view these properties, simply hover over the info icon. Additionally, users can reset the screen to return to its original state. PicDrop supports image files up to 10 MB in size. For testing purposes, you can use the provided sample images to ensure everything is functioning correctly
+PicDrop displays the basic properties of images that are dragged, dropped, or uploaded by users. To view these properties, simply hover over the info icon. Additionally, users can reset the screen to return to its original state. PicDrop supports image files up to 10 MB in size. For testing purposes, you can use the provided sample images to ensure everything is functioning correctly. 
+
+You can access the website [here](https://zzzmlssqnzzz.github.io/PicDrop/).
 
 # Figma
 
