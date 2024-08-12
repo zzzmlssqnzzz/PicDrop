@@ -5,11 +5,16 @@
 
 h1 {
   font-family:'Josefin Sans';
+  padding-top: 50px;
   margin-bottom: 20px;
 }
 
 .picDrop{
   color:#4B56D0; 
+}
+
+.dark{
+  
 }
 
 .tooltip{
@@ -87,15 +92,15 @@ h1 {
   cursor: pointer;
 }
 
-button{
-  background-color: #4B56D0;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.lang-switch, .theme-switch {
+  display: inline-flex;
+  align-items: center;
 }
 
-button:hover {
-  background-color: black;
+.switch-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 20px;
 }

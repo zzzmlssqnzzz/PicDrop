@@ -9,13 +9,20 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close'; 
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import ReplayTwoToneIcon from '@mui/icons-material/ReplayTwoTone';
+import LanguageSwitch from './components/LanguageSwitch';
+import MaterialUiSwitch from './components/MaterialUiSwitch'
+import { useTranslation } from 'react-i18next';
+
 
 function App() {
   const [image, setImage] = useState(null);
   const [error, setError] = useState('');
   const [open, setOpen] = useState(true);
+  const {t, i18n} = useTranslation();
   const fileInputRef = useRef(null); 
 
+  console.log(navigator.language)
+  
   const formatFileSize = (size) => {
     return (size / (1024 * 1024)).toFixed(2);
   };
@@ -29,17 +36,17 @@ function App() {
     console.log(file.type)
 
     if (files.length > 1) {
-      setError('Please upload only one file at a time.');
+      setError(t('warnings.two_uploads_warning'));
       setImage(null);
       setOpen(true);
     }
     else if (file && !file.type.startsWith('image/')) {
-      setError('Unsupported file format. Please upload an image.');
+      setError( t('warnings.type_warning'));
       setImage(null);
       setOpen(true);
     }
     else if (converted_size > 10){
-      setError('Files larger than 10 MB are currently not supported. Please compress your file.');
+      setError( t('warnings.size_warning'));
       setImage(null);
       setOpen(true);
     }
@@ -65,7 +72,19 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome to <span className='picDrop'>PicDrop</span></h1>
+      <div className="switch-container">
+      <div className="lang-switch">
+         <LanguageSwitch/>
+      </div>
+      <div className="theme-switch">
+         <MaterialUiSwitch/>
+         </div>
+      </div>
+      <h1>{ t("welcome")}
+      <span className='picDrop'>
+        { t("picdrop")}
+        </span>
+      </h1>
        <Box sx={{ width: '65%', margin:'auto'}}>
       <Collapse in={open}>
         {error? <Alert severity='warning'
@@ -109,10 +128,10 @@ function App() {
               </div>
               <Tooltip anchorSelect='.info-details'place='top' className='tooltip'>
                  <div className="image-details">
-                <p><strong>Information</strong></p>
-                <p>Name: {image.name}</p>
-                <p>Format: {image.type.split("/")[1].toUpperCase()}</p>
-                <p>Size: {formatFileSize(image.size)} MB</p>
+                <p><strong>{ t('image_data.information')}</strong></p>
+                <p>{ t('image_data.name')}: {image.name}</p>
+                <p>{ t('image_data.format')}: {image.type.split("/")[1].toUpperCase()}</p>
+                <p>{ t('image_data.size')}: {formatFileSize(image.size)} MB</p>
               </div>
               </Tooltip>
             </div>
@@ -120,7 +139,7 @@ function App() {
               <ReplayTwoToneIcon
               fontSize='large'
             data-tooltip-id="reset-tooltip" 
-            data-tooltip-content="Reset" 
+            data-tooltip-content={t("reset")} 
             data-tooltip-place="top" 
             sx={{ stroke: "#4B56D0", strokeWidth: 1 }}
             onClick={handleReset}/>
@@ -131,8 +150,8 @@ function App() {
         ) : (
           <div className='upload-placeholder'>
             <img src={picdrop_icon} alt="PicDrop Icon" className="picdrop-icon"/>
-            <p><span>Drag and drop an image here or </span><span onClick={handleBrowse} className="browse-link"><strong>Browse</strong></span></p>
-            <p>Supports JPG, PNG, GIF, WEBP, TIFF or BMP</p>
+            <p><span>{ t("placeholder")} </span><span onClick={handleBrowse} className="browse-link"><strong>{ t("browse")}</strong></span></p>
+            <p>{ t("valid_type")}</p>
           </div> 
         )}
       </div>

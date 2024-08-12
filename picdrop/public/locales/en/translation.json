@@ -1,0 +1,19 @@
+{
+    "welcome": "Welcome to ",
+    "picdrop": "PicDrop",
+    "image_data": {
+        "information": "Information",
+        "name": "Name", 
+        "format": "Format",
+        "size": "Size"
+    },
+    "warnings":  {
+        "two_uploads_warning":  "Please upload only one file at a time.", 
+        "size_warning": "Files larger than 10 MB are currently not supported. Please compress your file.", 
+        "type_warning": "Unsupported file format. Please upload an image."
+    },
+    "placeholder": "Drag and drop an image here or ", 
+    "browse": "Browse",
+    "valid_type": "Supports JPG, PNG, GIF, WEBP, TIFF or BMP",
+    "reset": "Reset"
+}
