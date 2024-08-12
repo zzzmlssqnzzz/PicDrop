@@ -18,7 +18,7 @@ function App() {
   const [image, setImage] = useState(null);
   const [error, setError] = useState('');
   const [open, setOpen] = useState(true);
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const fileInputRef = useRef(null); 
 
   console.log(navigator.language)
