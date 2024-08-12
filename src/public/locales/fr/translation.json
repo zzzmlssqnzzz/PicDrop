@@ -1,8 +1,8 @@
 {
     "warnings":{
-        "two_uploads_warning":"Please upload only one file at a time",
-        "type_warning":"", 
-        "size_warning":""
+        "two_uploads_warning":"Veuillez télécharger un seul fichier à la fois.",
+        "type_warning":"Format de fichier non pris en charge. Veuillez télécharger une image.", 
+        "size_warning":"Les fichiers de plus de 10 Mo ne sont actuellement pas pris en charge. Veuillez compresser votre fichier"
     }, 
     "welcome":"Bienvenue à ", 
     "image_data":{
@@ -12,5 +12,5 @@
     "reset":"Réinitialiser", 
     "placeholder":"Glisser-déposer une image ici ou ", 
     "browse":"Télécharger", 
-    "valid_type":"Prend en charge les formats JPG, PNG, GIF, WEBP, TIFF ou BMP."
+    "valid_type":"Prend en charge les formats JPG, PNG, GIF, WEBP, TIFF ou BMP"
 }
